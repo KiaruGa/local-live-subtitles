@@ -23,6 +23,7 @@ function Invoke-Step {
     param([string]$Title, [scriptblock]$Action)
     Write-Host ""
     Write-Host "=== $Title ===" -ForegroundColor Cyan
+    $global:LASTEXITCODE = 0
     & $Action
     if ($LASTEXITCODE -ne 0) {
         throw "Step failed: $Title (exit code $LASTEXITCODE)"

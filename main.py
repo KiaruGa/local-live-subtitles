@@ -150,7 +150,6 @@ class ApplicationController:
     # ------------------------------------------------------- single instance
     def _acquire_single_instance(self) -> bool:
         self._server = QLocalServer(self.app)
-        QLocalServer.removeServer(SINGLE_INSTANCE_KEY)
         if self._server.listen(SINGLE_INSTANCE_KEY):
             self._server.newConnection.connect(self._on_second_instance)
             return True
@@ -161,7 +160,11 @@ class ApplicationController:
             socket.write(b"show")
             socket.waitForBytesWritten(700)
             socket.disconnectFromServer()
-        return False
+            return False
+
+        # A previous crash can leave a stale local-server endpoint behind.
+        QLocalServer.removeServer(SINGLE_INSTANCE_KEY)
+        return self._server.listen(SINGLE_INSTANCE_KEY)
 
     def _on_second_instance(self):
         connection = self._server.nextPendingConnection() if self._server else None
