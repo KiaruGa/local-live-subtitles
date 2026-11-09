@@ -1,0 +1,13 @@
+# Runtime dependencies for Local Live Subtitles.
+# STT + translation run entirely on CTranslate2 (no PyTorch needed).
+PyQt6>=6.5.0
+faster-whisper>=1.0.0
+ctranslate2>=4.4.0
+soundcard>=0.4.3
+numpy>=1.24.0,<3
+sentencepiece>=0.2.0
+sacremoses>=0.1.1
+
+# Optional: direct stream URL capture (not needed for system loopback mode)
+streamlink>=6.0.0
+yt-dlp>=2024.0.0

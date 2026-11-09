@@ -1,0 +1,34 @@
+# Python bytecode and environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Build artifacts
+/build/
+/dist/
+/spec/
+*.spec.bak
+
+# Local model cache and prepared model weights (large; fetch/prepare locally)
+/models/
+*.bin
+*.onnx
+*.safetensors
+*.pt
+*.pth
+
+# Logs and local test output
+*.log
+*.old.log
+e2e_result.txt
+sample.wav
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini

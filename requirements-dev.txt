@@ -1,0 +1,7 @@
+# Build and model-preparation dependencies.
+# PyTorch and Transformers are used only to convert the OPUS-MT model once;
+# they are NOT bundled into the application.
+-r requirements.txt
+pyinstaller>=6.10.0
+torch>=2.0.0
+transformers>=4.38.0
